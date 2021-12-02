@@ -39,8 +39,10 @@
     "prettier": "1.19.1"
   },
   "scripts": {
-    "start": "concurrently \"npm run server:dev\" \"npm run bundler:dev\"",
+    "start": "NODE_ENV=production nodemon -- --conditions=react-server server",
+    "start:dev": "concurrently \"npm run server:dev\" \"npm run bundler:dev\"",
     "start:prod": "concurrently \"npm run server:prod\" \"npm run bundler:prod\"",
+    "build": "NODE_ENV=production node scripts/build.js",
     "server:dev": "cross-env NODE_ENV=development nodemon -- --conditions=react-server server",
     "server:prod": "cross-env NODE_ENV=production nodemon -- --conditions=react-server server",
     "bundler:dev": "cross-env NODE_ENV=development nodemon -- scripts/build.js",
