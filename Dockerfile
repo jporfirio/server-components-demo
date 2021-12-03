@@ -18,6 +18,7 @@ COPY . .
 
 ADD prisma .
 RUN npx prisma generate
+RUN npx remix setup
 RUN npm run build
 
 ENTRYPOINT [ "npm", "run" ]

@@ -1,6 +1,6 @@
-# fly.toml file generated for react-server-components on 2021-12-02T14:05:38-07:00
+# fly.toml file generated for remix-sc-notes on 2021-12-02T18:02:36-07:00
 
-app = "react-server-components"
+app = "remix-sc-notes"
 
 kill_signal = "SIGINT"
 kill_timeout = 5
@@ -14,7 +14,7 @@ processes = []
 
 [[services]]
   http_checks = []
-  internal_port = 4000
+  internal_port = 3000
   processes = ["app"]
   protocol = "tcp"
   script_checks = []
