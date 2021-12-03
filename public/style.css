@@ -227,6 +227,7 @@ hr {
   cursor: pointer;
   font-weight: 700;
   outline-style: none;
+  text-decoration: none;
 }
 .edit-button--solid {
   background: var(--primary-blue);
@@ -318,6 +319,7 @@ ul.notes-list {
 }
 
 .sidebar-note-open {
+  display: inline-block;
   position: absolute;
   top: 0;
   left: 0;
@@ -369,8 +371,8 @@ ul.notes-list {
 .sidebar-note-toggle-expand:focus {
   box-shadow: var(--outline-box-shadow);
 }
-.sidebar-note-open:hover + .sidebar-note-toggle-expand,
-.sidebar-note-open:focus + .sidebar-note-toggle-expand,
+.sidebar-note-list-item:hover .sidebar-note-toggle-expand,
+.sidebar-note-list-item:focus-within .sidebar-note-toggle-expand,
 .sidebar-note-toggle-expand:hover,
 .sidebar-note-toggle-expand:focus {
   visibility: visible;

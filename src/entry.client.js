@@ -6,12 +6,7 @@
  *
  */
 
-/**
- * @typedef { import("@prisma/client").PrismaClient } PrismaClient
- */
-import {PrismaClient} from '@prisma/client';
+import ReactDOM from 'react-dom';
+import {RemixBrowser} from 'remix';
 
-/**
- * @type {PrismaClient}
- */
-export const prisma = new PrismaClient();
+ReactDOM.hydrate(<RemixBrowser />, document);

@@ -6,18 +6,12 @@
  *
  */
 
-import {prisma} from './db.server';
-import SidebarNote from './SidebarNote';
+import {useSearchParams} from 'remix';
+import SidebarNote from './SidebarNoteContainer';
 
-export default function NoteList({searchText}) {
-  const notes = prisma.note.findMany({
-    where: {
-      title: {
-        contains: searchText ?? undefined,
-      },
-    },
-  });
-
+export default function NoteList({notes}) {
+  let [params] = useSearchParams();
+  let searchText = params.get('term');
   return notes.length > 0 ? (
     <ul className="notes-list">
       {notes.map((note) => (
