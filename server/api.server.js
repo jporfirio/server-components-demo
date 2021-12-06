@@ -101,60 +101,60 @@ app.get('/react', function(req, res) {
 
 const NOTES_PATH = path.resolve(__dirname, '../notes');
 
-app.post(
-  '/notes',
-  handleErrors(async function(req, res) {
-    const result = await prisma.note.create({
-      data: {
-        body: req.body.body,
-        title: req.body.title,
-      },
-    });
+// app.post(
+//   '/notes',
+//   handleErrors(async function(req, res) {
+//     const result = await prisma.note.create({
+//       data: {
+//         body: req.body.body,
+//         title: req.body.title,
+//       },
+//     });
 
-    await writeFile(
-      path.resolve(NOTES_PATH, `${result.id}.md`),
-      req.body.body,
-      'utf8'
-    );
+//     await writeFile(
+//       path.resolve(NOTES_PATH, `${result.id}.md`),
+//       req.body.body,
+//       'utf8'
+//     );
 
-    sendResponse(req, res, result.id);
-  })
-);
+//     sendResponse(req, res, result.id);
+//   })
+// );
 
-app.put(
-  '/notes/:id',
-  handleErrors(async function(req, res) {
-    const updatedId = Number(req.params.id);
-    await prisma.note.update({
-      where: {
-        id: updatedId,
-      },
-      data: {
-        title: req.body.title,
-        body: req.body.body,
-      },
-    });
-    await writeFile(
-      path.resolve(NOTES_PATH, `${updatedId}.md`),
-      req.body.body,
-      'utf8'
-    );
-    sendResponse(req, res, null);
-  })
-);
+// app.put(
+//   '/notes/:id',
+//   handleErrors(async function(req, res) {
+//     const updatedId = Number(req.params.id);
+//     await prisma.note.update({
+//       where: {
+//         id: updatedId,
+//       },
+//       data: {
+//         title: req.body.title,
+//         body: req.body.body,
+//       },
+//     });
+//     await writeFile(
+//       path.resolve(NOTES_PATH, `${updatedId}.md`),
+//       req.body.body,
+//       'utf8'
+//     );
+//     sendResponse(req, res, null);
+//   })
+// );
 
-app.delete(
-  '/notes/:id',
-  handleErrors(async function(req, res) {
-    await prisma.note.delete({
-      where: {
-        id: Number(req.params.id),
-      },
-    });
-    await unlink(path.resolve(NOTES_PATH, `${req.params.id}.md`));
-    sendResponse(req, res, null);
-  })
-);
+// app.delete(
+//   '/notes/:id',
+//   handleErrors(async function(req, res) {
+//     await prisma.note.delete({
+//       where: {
+//         id: Number(req.params.id),
+//       },
+//     });
+//     await unlink(path.resolve(NOTES_PATH, `${req.params.id}.md`));
+//     sendResponse(req, res, null);
+//   })
+// );
 
 app.get(
   '/notes',
@@ -182,8 +182,8 @@ app.get('/sleep/:ms', function(req, res) {
   }, req.params.ms);
 });
 
-app.use(express.static('build'));
-app.use(express.static('public'));
+app.use(express.static('build', {maxAge: '1h'}));
+app.use(express.static('public', {maxAge: '1h'}));
 
 app.on('error', function(error) {
   if (error.syscall !== 'listen') {
