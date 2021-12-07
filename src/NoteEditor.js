@@ -13,22 +13,22 @@ import {create, update, destroy} from './notes.server';
 import NotePreview from './NotePreview';
 
 export async function action({request, params}) {
-  let data = Object.fromEntries(await request.formData());
+  // let data = Object.fromEntries(await request.formData());
 
-  if (data._action === 'create') {
-    let note = await create(data);
-    return redirect(`/${note.id}`);
-  }
+  // if (data._action === 'create') {
+  //   let note = await create(data);
+  //   return redirect(`/${note.id}`);
+  // }
 
-  if (data._action === 'update') {
-    await update(params.id, data);
-    return redirect(`/${params.id}`);
-  }
+  // if (data._action === 'update') {
+  //   await update(params.id, data);
+  //   return redirect(`/${params.id}`);
+  // }
 
-  if (data._action === 'delete') {
-    await destroy(params.id);
-    return redirect('/');
-  }
+  // if (data._action === 'delete') {
+  //   await destroy(params.id);
+  //   return redirect('/');
+  // }
 
   throw new Error('Unexpected action');
 }
@@ -118,4 +118,8 @@ export default function NoteEditor({noteId, initialTitle, initialBody}) {
       </div>
     </Form>
   );
+}
+
+export function ErrorBoundary() {
+  return <div>We disabled mutations, this is the internet.</div>;
 }

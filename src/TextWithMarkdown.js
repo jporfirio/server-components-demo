@@ -9,6 +9,9 @@
 import marked from 'marked';
 // import sanitizeHtml from 'sanitize-html';
 
+// esbuild doesn't deal with dynamic `require` inside of node modules as easily
+// as webpack so this was removed to get the app to work quickly, there are
+// workarounds but I didn't have time for this demo.
 // const allowedTags = sanitizeHtml.defaults.allowedTags.concat([
 //   'img',
 //   'h1',

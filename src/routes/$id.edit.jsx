@@ -1,8 +1,8 @@
 import {useLoaderData} from 'remix';
-import NoteEditor, {action} from '../NoteEditor';
+import NoteEditor, {action, ErrorBoundary} from '../NoteEditor';
 import {get} from '../notes.server';
 
-export {action};
+export {action, ErrorBoundary};
 
 export function loader({params}) {
   return get(params.id);

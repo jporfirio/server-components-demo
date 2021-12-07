@@ -48,10 +48,10 @@ export default function SidebarNote({id, title, children, expandedChildren}) {
         prefetch="intent"
         className="sidebar-note-open"
         style={({isActive}) => ({
-          backgroundColor: isPending
-            ? 'var(--gray-80)'
-            : isActive
+          backgroundColor: isActive
             ? 'var(--tertiary-blue)'
+            : isPending
+            ? 'var(--gray-80)'
             : '',
           border: isActive
             ? '1px solid var(--primary-border)'

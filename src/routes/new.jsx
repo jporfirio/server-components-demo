@@ -1,6 +1,6 @@
-import NoteEditor, {action} from '../NoteEditor';
+import NoteEditor, {action, ErrorBoundary} from '../NoteEditor';
 
-export {action};
+export {action, ErrorBoundary};
 
 export function loader() {
   return null;
